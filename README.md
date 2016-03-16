@@ -1,4 +1,4 @@
-# Homework 2 - *Snappy Chat*
+# Homework 2 - *Snappy Chat* [![Build Status](https://travis-ci.org/nongdenchet/coder_snap.svg?branch=master)](https://travis-ci.org/nongdenchet/coder_snap) [![Coverage Status](https://coveralls.io/repos/github/nongdenchet/coder_snap/badge.svg?branch=master)](https://coveralls.io/github/nongdenchet/coder_snap?branch=master)
 
 **Snappy Chat** is a Ruby on Rails blog application that allows users to send messages to each other that can only be read once.
 
