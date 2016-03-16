@@ -6,7 +6,7 @@ Submitted by: **Vũ Huy Quân**
 
 Time spent: **X** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://git.heroku.com/sanppychat.git**
 
 ## User Stories
 
