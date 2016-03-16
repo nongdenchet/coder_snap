@@ -1,2 +1,102 @@
 @import "materialize";
 @import "toastr";
+
+.brand-logo {
+  margin-left: 16px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.nav-wrapper {
+  background-color: #1e88e5;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#content {
+  overflow: hidden
+}
+
+.container {
+  width: 100%;
+}
+
+#chat-container {
+  margin-top: 48px;
+  height: 500px;
+  overflow: hidden;
+  max-height: 500px;
+  font-size: 14px;
+}
+
+#friend-list {
+  margin-bottom: 16px;
+  overflow-y: scroll;
+  max-height: 600px;
+  margin-right: 16px;
+  margin-top: 48px;
+}
+
+#chat-list {
+  overflow-y: scroll;
+  margin-top: 16px;
+  margin-bottom: 0;
+  height: 400px;
+  max-height: 400px;
+}
+
+.row .message {
+  margin-bottom: 0;
+}
+
+#recipient {
+  margin-left: 16px;
+  max-width: 50%;
+}
+
+#recipient-name {
+  margin-left: 4px;
+  color: black;
+}
+
+#sender {
+  margin-right: 16px;
+  max-width: 50%;
+}
+
+footer.page-footer .footer-copyright {
+  margin-top: 0;
+  background-color: #2196f3;
+}
+
+footer.page-footer {
+  margin-top: 0;
+  background-color: #ffffff;
+}
+
+.page-footer {
+  background-color: #1e88e5;
+}
+
+.background-blur {
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+#hr-divider {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}

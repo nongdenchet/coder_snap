@@ -1,0 +1,119 @@
+<div class="row" id="content">
+  <div class="col m4">
+    <ul class="collection" id="friend-list">
+      <% 5.times do %>
+          <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Title</span>
+            <p>First Line <br>
+              Second Line
+            </p>
+            <a href="#" class="secondary-content"><i class="material-icons">grade</i></a>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col m8">
+    <div class="card blue lighten-5" id="chat-container">
+      <div class="card-content white-text">
+        <h4 id="recipient-name">Harley</h4>
+
+        <hr>
+
+        <ul id="chat-list">
+          <li>
+            <div class="row message">
+              <div class="card green darken-1 left" id="recipient">
+                <div class="card-content white-text">
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="row message">
+              <div class="card blue darken-1 right" id="sender">
+                <div class="card-content white-text">
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="row message">
+              <div class="card green darken-1 left" id="recipient">
+                <div class="card-content white-text">
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="row message">
+              <div class="card blue darken-1 right" id="sender">
+                <div class="card-content white-text">
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="row message">
+              <div class="card green darken-1 left" id="recipient">
+                <div class="card-content white-text">
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="row message">
+              <div class="card blue darken-1 right" id="sender">
+                <div class="card-content white-text">
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card blue lighten-5" style="margin-top: 16px">
+      <div class="card-content">
+        <div class="row" style="margin-bottom: 0">
+          <div class="col m10">
+            <div class="input-field">
+              <input id="sender-message" style="height: 1.5rem" type="text" class="validate">
+              <label for="sender-message">Message</label>
+            </div>
+          </div>
+
+          <div class="col m2">
+            <a class="waves-effect waves-light btn" style="padding: 0 2.5rem">Send</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#chat-list').scrollTop($('#chat-list').height());
+
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea1').characterCounter();
+  });
+</script>
