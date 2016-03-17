@@ -1,10 +1,20 @@
 <nav>
   <div class="nav-wrapper">
     <%= link_to 'Snappy Chat', root_path, class: 'brand-logo' %>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li>
-        <a>Menu</a>
-      </li>
+    <ul class="right hide-on-med-and-down">
+      <% if current_user %>
+          <li>Hello <%= current_user.name %>,</li>
+          <li>
+            <%= link_to 'Logout', sessions_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+          </li>
+      <% else %>
+          <li>
+            <%= link_to 'Login', new_sessions_path %>
+          </li>
+          <li>
+            <%= link_to 'Register', new_user_path %>
+          </li>
+      <% end %>
     </ul>
   </div>
 </nav>

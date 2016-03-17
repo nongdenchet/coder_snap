@@ -42,6 +42,8 @@ gem 'draper'
 gem 'kaminari'
 # figaro
 gem 'figaro'
+# bcrypt
+gem 'bcrypt'
 
 group :test do
   # Testing framework go here
