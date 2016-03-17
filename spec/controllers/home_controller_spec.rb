@@ -5,7 +5,7 @@ RSpec.describe HomeController, type: :controller do
     @user = create(:user)
   end
 
-  context 'get/index' do
+  context 'GET #index' do
     it 'should render home/index' do
       session[:user_id] = @user.id
       get :index
