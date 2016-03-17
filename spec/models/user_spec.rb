@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_length_of(:password).is_at_least(8) }
+  it { should validate_presence_of(:password_confirmation) }
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email) }
+  it { should_not allow_value('test@test').for(:email) }
+  it { should_not allow_value('android').for(:email) }
+  it { should_not allow_value('ios.@..c').for(:email) }
+  it { should allow_value('vuhuyquan@apidez.com').for(:email) }
 end
