@@ -20,13 +20,15 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'should show success flash' do
-        post :create, user: attributes_for(:user)
         expect(flash[:notice]).to eq('Register successfully')
       end
 
-      it 'should show success flash' do
-        post :create, user: attributes_for(:user)
-        expect(flash[:notice]).to eq('Register successfully')
+      it 'should store user id' do
+        expect(session[:user_id]).to eq(User.first.id)
+      end
+
+      it 'should redirect to root path' do
+        expect(response).to redirect_to(root_path)
       end
     end
 
