@@ -8,6 +8,7 @@
 #  password_digest :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  description     :text
 #
 
 class User < ActiveRecord::Base
@@ -20,4 +21,19 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true,
             format: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+
+  def self.all_people(current_user)
+    User.where.not(id: current_user.id)
+  end
+
+  def load_received_messages
+    received_messages
+        .order('seen ASC')
+        .order('created_at DESC')
+        .preload(:sender)
+  end
+
+  def load_sent_messages
+    sent_messages.preload(:recipient)
+  end
 end

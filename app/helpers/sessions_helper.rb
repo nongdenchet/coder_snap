@@ -1,4 +1,4 @@
-module SessionHelper
+module SessionsHelper
   def current_user_id
     session[:user_id]
   end

@@ -8,9 +8,13 @@
 #  password_digest :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  description     :text
 #
 
 class UsersController < ApplicationController
+  before_action :skip_login, only: [:new, :create]
+  before_action :require_login, only: [:index]
+
   def new
     @user = User.new
   end
@@ -24,6 +28,10 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def index
+    @users = User.all_people(current_user)
   end
 
   private

@@ -3,7 +3,12 @@
     <%= link_to 'Snappy Chat', root_path, class: 'brand-logo' %>
     <ul class="right hide-on-med-and-down">
       <% if current_user %>
-          <li>Hello <%= current_user.name %>,</li>
+          <li>
+            <%= link_to 'Add friends', users_path %>
+          </li>
+          <li>
+            <%= link_to 'Sent messages', sent_messages_path, method: :get %>
+          </li>
           <li>
             <%= link_to 'Logout', sessions_path, method: :delete, data: {confirm: 'Are you sure?'} %>
           </li>

@@ -9,17 +9,17 @@ RSpec.describe HomeController, type: :controller do
     it 'should render home/index' do
       session[:user_id] = @user.id
       get :index
-      expect(response).to render_template(:index)
+      expect(response).to redirect_to messages_path
     end
 
     it 'should redirect to login' do
       get :index
-      expect(response).to redirect_to(new_sessions_path)
+      expect(response).to redirect_to new_sessions_path
     end
 
     it 'should not render index' do
       get :index
-      expect(response).not_to render_template(:index)
+      expect(response).not_to redirect_to messages_path
     end
   end
 end

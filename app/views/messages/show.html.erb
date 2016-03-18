@@ -1,0 +1,19 @@
+<h3><%= @message.sender.name %></h3>
+<div class="row">
+  <div class="col m8">
+    <div class="card blue darken-1">
+      <div class="card-content white-text">
+        <p><%= @message.content %></p>
+      </div>
+      <div class="card-action blue darken-2">
+        <div class="white-text">
+          Sent at: <%= @message.create_time %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  Materialize.toast('Message has been read', 2000);
+</script>

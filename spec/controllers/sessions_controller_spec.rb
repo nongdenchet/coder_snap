@@ -11,7 +11,7 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to render_template(:new)
     end
 
-    it 'should render root page' do
+    it 'should skip login' do
       session[:user_id] = @user.id
       get :new
       expect(response).to redirect_to(root_path)
@@ -34,6 +34,14 @@ RSpec.describe SessionsController, type: :controller do
 
       it 'should store user id' do
         expect(session[:user_id]).to eq(@user.id)
+      end
+    end
+
+    context 'skip login' do
+      it 'should skip login' do
+        session[:user_id] = @user.id
+        post :create, email: 'aaa', password: 'aaa'
+        expect(response).to redirect_to(root_path)
       end
     end
 

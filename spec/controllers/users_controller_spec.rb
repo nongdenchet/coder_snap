@@ -8,6 +8,7 @@
 #  password_digest :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  description     :text
 #
 
 require 'rails_helper'
@@ -17,6 +18,13 @@ RSpec.describe UsersController, type: :controller do
     it 'should render new' do
       get :new
       expect(response).to render_template(:new)
+    end
+
+    it 'should skip login' do
+      @user = create(:user)
+      session[:user_id] = @user.id
+      get :new
+      expect(response).to redirect_to root_path
     end
   end
 
@@ -41,6 +49,15 @@ RSpec.describe UsersController, type: :controller do
 
       it 'should redirect to root path' do
         expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context 'skip login' do
+      it 'should skip login' do
+        @user = create(:user)
+        session[:user_id] = @user.id
+        post :create, user: {}
+        expect(response).to redirect_to root_path
       end
     end
 

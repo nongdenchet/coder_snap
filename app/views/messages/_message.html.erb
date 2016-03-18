@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col m8">
+    <div class="card <%= message.class_for_card %>">
+      <div class="card-content white-text">
+        <span class="card-title"><%= message.sender.name %></span>
+        <p><%= message.short_content %></p>
+      </div>
+      <% unless message.seen %>
+          <div class="card-action blue darken-2">
+            <%= link_to 'Detail', message %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

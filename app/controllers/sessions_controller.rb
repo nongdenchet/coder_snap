@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :skip_login, only: [:new, :create]
+
   def new
-    redirect_to root_path if current_user
   end
 
   def create
