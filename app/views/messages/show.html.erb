@@ -1,6 +1,10 @@
-<h3>From: <%= @message.sender.name %></h3>
 <div class="row">
-  <div class="col m8">
+  <div class="col m8 offset-m2">
+    <h3>From: <%= @message.sender.name %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col m8 offset-m2">
     <div class="card blue darken-1">
       <div class="card-content white-text">
         <p><%= @message.content %></p>

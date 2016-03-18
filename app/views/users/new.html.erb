@@ -1,7 +1,7 @@
 <div class="row" style="margin-top: 16px">
   <div class="col m8 offset-m2">
     <h3>Register</h3>
-    <%= render 'share/error', object: @user %>
+    <%= render 'share/model_error', object: @user %>
 
     <%= form_tag users_path, class: 'input-form' do %>
         <div class="row">

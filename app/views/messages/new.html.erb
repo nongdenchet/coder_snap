@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col m8 offset-m2">
+    <h3>Create Message</h3>
+
+    <%= render 'share/error', errors: @errors %>
+
+    <%= form_tag messages_path, method: :post do %>
+        <div class="card">
+          <div class="card-content">
+            <div class="row" style="margin-bottom: 0">
+              <div class="col s12" id="friends-chip">
+              </div>
+
+              <div class="input-field col s12">
+                <select title="friends" id="friends-selector">
+                  <option value="" disabled selected>Choose your friends</option>
+                  <%= render 'users/friends', friends: @friends %>
+                </select>
+              </div>
+
+              <div class="input-field col s12">
+                <input id="content" type="text" class="validate" name="content"
+                       value="<%= params[:content] %>" placeholder="Content">
+              </div>
+
+              <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                  Send
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $('#friends-selector').on('change', function () {
+    handleChip(this.value);
+    removeOption(this.value);
+    resetSelector()
+  });
+
+  removeOption = function (value) {
+    $('#friends-selector option').each(function () {
+      if ($(this).val() == value) {
+        $(this).remove();
+      }
+    });
+  };
+
+  handleChip = function (value) {
+    $('#friends-selector option').each(function () {
+      if ($(this).val() == value) {
+        setUpChip($(this).html(), value);
+      }
+    });
+  };
+
+  setUpChip = function (name, value) {
+    var id = "chip-" + value;
+    addChip(id, name, value);
+    addChipListener(id, name, value)
+  };
+
+  addChip = function (id, name, value) {
+    $('#friends-chip').append(
+        " <div class='chip'>" + name + "<i id='" + id + "' class='material-icons'>close</i>"
+        + "<input type='hidden' name='friends[]' value='" + value + "'></div>"
+    );
+  };
+
+  addChipListener = function (id, name, value) {
+    $("#" + id).click(function () {
+      $('#friends-selector').append($('<option>', {
+        value: value,
+        text: name
+      }));
+      $('select').material_select();
+    })
+  };
+
+  resetSelector = function () {
+    $("#friends-selector").val('');
+    $('select').material_select();
+  }
+</script>

@@ -1,10 +1,12 @@
-<% unless object.errors.empty? %>
+<% if errors && !errors.empty? %>
     <div class="row">
-      <div class="card red">
-        <div class="card-content white-text">
-          <% object.errors.full_messages.each do |msg| %>
-              x <%= msg %><br/>
-          <% end %>
+      <div class="col s12">
+        <div class="card red">
+          <div class="card-content white-text">
+            <% errors.each do |error| %>
+                x <%= error %><br/>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@
 
 class MessagesController < ApplicationController
   before_action :require_login
+  before_action :get_friends, only: [:new, :create]
   before_action :check_readability, only: [:show]
 
   def index
@@ -36,20 +37,42 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @message = Message.new
   end
 
   def create
+    result = CreateMessageService.new(current_user, params).create
+    if result[:success]
+      flash[:notice] = 'Message has been sent'
+      redirect_to messages_path
+    else
+      @errors = result[:errors]
+      puts @errors
+      render :new
+    end
   end
 
   private
+  def get_friends
+    @friends = current_user.friends
+  end
+
   def check_readability
     @message = Message.find(params[:id]).decorate
     if current_user != @message.recipient
-      flash[:alert] = 'You can not read this message'
-      redirect_to messages_path
+      handle_not_recipient
     elsif @message.seen
-      flash[:alert] = 'Message has alreay been read'
-      redirect_to messages_path
+      handle_message_read
     end
+  end
+
+  def handle_not_recipient
+    flash[:alert] = 'You can not read this message'
+    redirect_to messages_path
+  end
+
+  def handle_message_read
+    flash[:alert] = 'Message has alreay been read'
+    redirect_to messages_path
   end
 end

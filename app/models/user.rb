@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
         .preload(:sender)
   end
 
+  def friends
+    User.all_people(self)
+  end
+
   def load_sent_messages
     sent_messages.preload(:recipient)
   end
