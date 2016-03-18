@@ -2,7 +2,7 @@
   <div class="col m8">
     <div class="card <%= message.class_for_card %>">
       <div class="card-content white-text">
-        <span class="card-title"><%= message.sender.name %></span>
+        <span class="card-title">From: <%= message.sender.name %></span>
         <p><%= message.short_content %></p>
       </div>
       <% unless message.seen %>

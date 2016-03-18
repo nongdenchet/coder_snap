@@ -31,6 +31,10 @@ class MessagesController < ApplicationController
     @message.update_attributes(seen: true)
   end
 
+  def detail
+    @message = Message.find(params[:id]).decorate
+  end
+
   def new
   end
 

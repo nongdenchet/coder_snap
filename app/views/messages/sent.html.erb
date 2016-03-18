@@ -1,2 +1,2 @@
 <h3>Sent Messages</h3>
-<%= render @messages %>
+<%= render partial: 'sent_message', collection: @messages, as: :message %>

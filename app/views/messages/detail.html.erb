@@ -1,4 +1,4 @@
-<h3>From: <%= @message.sender.name %></h3>
+<h3>To: <%= @message.recipient.name %></h3>
 <div class="row">
   <div class="col m8">
     <div class="card blue darken-1">
@@ -13,7 +13,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  Materialize.toast('Message has been read', 2000);
-</script>
