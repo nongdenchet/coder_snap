@@ -12,8 +12,11 @@
 #
 
 class MessagesController < ApplicationController
-  before_action :require_login
+  before_action :require_login, except: [:show]
   before_action :get_friends, only: [:new, :create]
+  before_action only: [:show] do
+    require_login(message_path(params[:id]))
+  end
   before_action :check_readability, only: [:show]
 
   def index
@@ -26,7 +29,9 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message.update_attributes(seen: true)
+    if @message.update_attributes(seen: true)
+      MessageMailer.seen_message_mail(@message.id).deliver_later
+    end
   end
 
   def detail

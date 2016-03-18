@@ -24,7 +24,8 @@ class CreateMessageService
 
   def create_message
     @params[:friends].each do |friend_id|
-      @sender.sent_messages.create(content: @params[:content], recipient_id: friend_id)
+      id = @sender.sent_messages.create(content: @params[:content], recipient_id: friend_id)
+      MessageMailer.new_message_mail(id).deliver_later
     end
   end
 end

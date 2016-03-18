@@ -12,10 +12,30 @@ end
 
 me = User.create(
     name: 'nongdenchet',
-    email: 'nongdenchet@gmail.com',
+    email: 'nongdenchet8435848@gmail.com',
     description: FFaker::Lorem.paragraph(5),
-    password: 'androidDeveloper7',
-    password_confirmation: 'androidDeveloper7'
+    password: 'androidDev',
+    password_confirmation: 'androidDev'
+)
+
+friend = User.create(
+    name: 'vuhuyquan',
+    email: 'vuhuyquan@gmail.com',
+    description: FFaker::Lorem.paragraph(5),
+    password: 'androidDev',
+    password_confirmation: 'androidDev'
+)
+
+me.relations.create(
+    name: 'friend',
+    target_id: friend.id,
+    active: true
+)
+
+friend.relations.create(
+    name: 'friend',
+    target_id: me.id,
+    active: true
 )
 
 User.take(15).each do |user|

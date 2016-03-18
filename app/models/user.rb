@@ -42,6 +42,9 @@ class User < ActiveRecord::Base
   end
 
   def load_sent_messages(page)
-    sent_messages.page(page).preload(:recipient)
+    sent_messages
+        .order('created_at DESC')
+        .page(page)
+        .preload(:recipient)
   end
 end

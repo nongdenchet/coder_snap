@@ -4,39 +4,29 @@
     <%= render 'share/model_error', object: @user %>
 
     <%= form_tag users_path, class: 'input-form' do %>
-        <div class="row">
-          <div class="input-field">
-            <input id="name" name="user[name]" type="text" value="<%= @user.name %>">
-            <label for="name" id="label-input">Username</label>
-          </div>
+        <div class="input-field">
+          <input id="name" name="user[name]" type="text" value="<%= @user.name %>">
+          <label for="name" id="label-input">Username</label>
         </div>
 
-        <div class="row">
-          <div class="input-field">
-            <input id="email" name="user[email]" type="text" value="<%= @user.email %>">
-            <label for="email" id="label-input">Email</label>
-          </div>
+        <div class="input-field">
+          <input id="email" name="user[email]" type="text" value="<%= @user.email %>">
+          <label for="email" id="label-input">Email</label>
         </div>
 
-        <div class="row">
-          <div class="input-field">
-            <input id="password" name="user[password]" type="password">
-            <label for="password" id="label-input">Password</label>
-          </div>
+        <div class="input-field">
+          <input id="password" name="user[password]" type="password">
+          <label for="password" id="label-input">Password</label>
         </div>
 
-        <div class="row">
-          <div class="input-field">
-            <input id="password_confirmation" name="user[password_confirmation]" type="password">
-            <label for="password_confirmation" id="label-input">Confirmation</label>
-          </div>
+        <div class="input-field">
+          <input id="password_confirmation" name="user[password_confirmation]" type="password">
+          <label for="password_confirmation" id="label-input">Confirmation</label>
         </div>
 
-        <div class="row">
-          <button class="btn waves-effect waves-light" type="submit" name="action">
-            Submit
-          </button>
-        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+          Submit
+        </button>
     <% end %>
   </div>
 </div>

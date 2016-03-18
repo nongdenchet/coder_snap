@@ -35,12 +35,14 @@ class UsersController < ApplicationController
   end
 
   def block
-    Relation.find_by(target_id: params[:id]).update_attributes(name: 'block')
+    Relation.find_by(target_id: params[:id], user_id: current_user_id)
+        .update_attributes(name: 'block')
     respond_to :js
   end
 
   def unblock
-    Relation.find_by(target_id: params[:id]).update_attributes(name: 'friend')
+    Relation.find_by(target_id: params[:id], user_id: current_user_id)
+        .update_attributes(name: 'friend')
     respond_to :js
   end
 
