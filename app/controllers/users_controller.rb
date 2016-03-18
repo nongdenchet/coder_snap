@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all_people(current_user)
+    @users = current_user.available_users
   end
 
   private

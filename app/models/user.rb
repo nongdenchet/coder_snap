@@ -12,8 +12,14 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :sent_messages, class_name: Message, foreign_key: :sender_id
-  has_many :received_messages, class_name: Message, foreign_key: :recipient_id
+  has_many :friend_relations, -> { where name: 'friend', active: true }, class_name: Relation
+  has_many :friends, through: :friend_relations, source: :target
+  has_many :block_relations, -> { where name: 'block', active: true }, class_name: Relation
+  has_many :blocks, through: :block_relations, source: :target
+
+  has_many :relations
+  has_many :sent_messages, class_name: Message, foreign_key: :sender_id, dependent: :destroy
+  has_many :received_messages, class_name: Message, foreign_key: :recipient_id, dependent: :destroy
 
   has_secure_password
   validates :password, length: {minimum: 8}
@@ -22,8 +28,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true,
             format: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
-  def self.all_people(current_user)
-    User.where.not(id: current_user.id)
+  def available_users
+    User.where('id NOT IN (?) AND id != (?)', relations.select(:target_id), id)
   end
 
   def load_received_messages
@@ -31,10 +37,6 @@ class User < ActiveRecord::Base
         .order('seen ASC')
         .order('created_at DESC')
         .preload(:sender)
-  end
-
-  def friends
-    User.all_people(self)
   end
 
   def load_sent_messages

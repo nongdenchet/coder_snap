@@ -4,10 +4,14 @@
     <ul class="right hide-on-med-and-down">
       <% if current_user %>
           <li>
-            <%= link_to 'Add friends', users_path, method: :get %>
+            <a class="dropdown-button" data-activates="dropdown-friend">
+              Friend<i class="material-icons right">arrow_drop_down</i>
+            </a>
           </li>
           <li>
-            <%= link_to 'Sent messages', sent_messages_path, method: :get %>
+            <a class="dropdown-button" data-activates="dropdown-message">
+              Message<i class="material-icons right">arrow_drop_down</i>
+            </a>
           </li>
           <li>
             <%= link_to 'Logout', sessions_path, method: :delete, data: {confirm: 'Are you sure?'} %>
@@ -23,3 +27,21 @@
     </ul>
   </div>
 </nav>
+
+<ul id="dropdown-message" class="dropdown-content">
+  <li>
+    <%= link_to 'Sent', sent_messages_path, method: :get %>
+  </li>
+  <li>
+    <%= link_to 'All', messages_path, method: :get %>
+  </li>
+</ul>
+
+<ul id="dropdown-friend" class="dropdown-content">
+  <li>
+    <%= link_to 'Requests', relations_path, method: :get %>
+  </li>
+  <li>
+    <%= link_to 'Add', users_path, method: :get %>
+  </li>
+</ul>

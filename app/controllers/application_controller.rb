@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path if current_user
   end
 
-  def require_login
+  def require_login(path = nil)
+    store_path(path)
     unless current_user
       flash[:alert] = 'Please login to your account'
       redirect_to new_sessions_path

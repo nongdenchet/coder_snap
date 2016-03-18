@@ -18,7 +18,19 @@ me = User.create(
     password_confirmation: 'androidDeveloper7'
 )
 
-users.each do |user|
+User.take(5).each do |user|
+  me.relations.create(
+      name: %w(friend block).sample,
+      target_id: user.id,
+      active: true
+  )
+
+  user.relations.create(
+      name: %w(friend block).sample,
+      target_id: me.id,
+      active: true
+  )
+
   me.sent_messages.create(
       recipient_id: user.id,
       content: FFaker::Lorem.paragraph(10),

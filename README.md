@@ -26,8 +26,8 @@ The following **required** functionality is complete:
 The following **optional** functionality is complete:
 
 * [ ] User can attach an image.
-* [x] User can have multiple recipients on one message. 
-* [ ] User can log in with Facebook. 
+* [ ] User can log in with Facebook.
+* [x] User can have multiple recipients on one message.
 * [ ] User A can "block" User B. If User A blocks User B, they will not see messages from User B. User B will not know they have been blocked.
 * [ ] User can remove friends from their friends list.
 * [ ] User can unblock friends from their block list.
@@ -38,7 +38,8 @@ The following **optional** functionality is complete:
 
 The following **additional** features are implemented:
 
-- [ ] (List anything else that you can get done to improve the app functionality!)
+- [x] User send friend request and wait for confirmation
+- [x] User can go to link "Friend requests" to confirm a friend request
 
 ## Video Walkthrough 
 

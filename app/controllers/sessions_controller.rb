@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if authenticate
       store_user_id(@user.id)
       flash[:notice] = 'Login successfully'
-      redirect_to root_path
+      redirect_to restore_path
     else
       flash[:alert] = 'Invalid email or password'
       render :new
