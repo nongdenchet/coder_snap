@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
 
   def load_received_messages
     received_messages
+        .where('sender_id NOT IN (?)', block_relations.select(:target_id))
         .order('seen ASC')
         .order('created_at DESC')
         .preload(:sender)

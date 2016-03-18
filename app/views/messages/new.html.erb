@@ -14,7 +14,7 @@
               <div class="input-field col s12">
                 <select title="friends" id="friends-selector">
                   <option value="" disabled selected>Choose your friends</option>
-                  <%= render 'users/friends', friends: @friends %>
+                  <%= render partial: 'users/option', collection: @friends, as: :friend %>
                 </select>
               </div>
 

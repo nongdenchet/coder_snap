@@ -20,8 +20,7 @@ class RelationsController < ApplicationController
   end
 
   def index
-    @relations = Relation.where(name: 'friend', active: false,
-                                target_id: current_user.id).preload(:user)
+    @relations = Relation.friend_requests(current_user_id)
   end
 
   def confirm

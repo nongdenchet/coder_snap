@@ -16,4 +16,8 @@ class Relation < ActiveRecord::Base
   belongs_to :target, class_name: User, foreign_key: :target_id
 
   validates_presence_of :name, :target_id, :user_id
+
+  def self.friend_requests(target_id)
+    Relation.where(name: 'friend', active: false, target_id: target_id).preload(:user)
+  end
 end

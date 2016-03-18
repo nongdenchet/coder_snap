@@ -1,8 +1,32 @@
+<ul id="dropdown-message" class="dropdown-content">
+  <li>
+    <%= link_to 'Sent', sent_messages_path, method: :get %>
+  </li>
+  <li>
+    <%= link_to 'All', messages_path, method: :get %>
+  </li>
+</ul>
+
+<ul id="dropdown-friend" class="dropdown-content">
+  <li>
+    <%= link_to 'Friends', friends_users_path, method: :get %>
+  </li>
+  <li>
+    <%= link_to 'Blocks', blocks_users_path, method: :get %>
+  </li>
+  <li>
+    <%= link_to 'Add', users_path, method: :get %>
+  </li>
+</ul>
+
 <nav>
   <div class="nav-wrapper">
-    <%= link_to 'Snappy Chat', root_path, class: 'brand-logo' %>
+    <%= link_to "Snappy Chat - #{current_user.name}", root_path, class: 'brand-logo' %>
     <ul class="right hide-on-med-and-down">
       <% if current_user %>
+          <li>
+            <%= link_to "Friend Requests (#{friend_request_count})", relations_path, method: :get %>
+          </li>
           <li>
             <a class="dropdown-button" data-activates="dropdown-friend">
               Friend<i class="material-icons right">arrow_drop_down</i>
@@ -27,21 +51,3 @@
     </ul>
   </div>
 </nav>
-
-<ul id="dropdown-message" class="dropdown-content">
-  <li>
-    <%= link_to 'Sent', sent_messages_path, method: :get %>
-  </li>
-  <li>
-    <%= link_to 'All', messages_path, method: :get %>
-  </li>
-</ul>
-
-<ul id="dropdown-friend" class="dropdown-content">
-  <li>
-    <%= link_to 'Requests', relations_path, method: :get %>
-  </li>
-  <li>
-    <%= link_to 'Add', users_path, method: :get %>
-  </li>
-</ul>

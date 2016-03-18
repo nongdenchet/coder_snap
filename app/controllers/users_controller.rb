@@ -13,7 +13,7 @@
 
 class UsersController < ApplicationController
   before_action :skip_login, only: [:new, :create]
-  before_action :require_login, only: [:index]
+  before_action :require_login, except: [:new, :create]
 
   def new
     @user = User.new
@@ -32,6 +32,24 @@ class UsersController < ApplicationController
 
   def index
     @users = current_user.available_users
+  end
+
+  def unblock
+    Relation.find_by(target_id: params[:id]).update_attributes(name: 'friend')
+    respond_to :js
+  end
+
+  def unfriend
+    UnfriendService.new(current_user_id, params[:id]).unfriend
+    respond_to :js
+  end
+
+  def blocks
+    @blocks = current_user.blocks
+  end
+
+  def friends
+    @friends = current_user.friends
   end
 
   private
