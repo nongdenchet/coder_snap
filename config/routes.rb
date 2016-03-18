@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
 
     member do
+      post :block
       post :unblock
       post :unfriend
     end

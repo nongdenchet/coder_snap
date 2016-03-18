@@ -34,6 +34,11 @@ class UsersController < ApplicationController
     @users = current_user.available_users.page(params[:page])
   end
 
+  def block
+    Relation.find_by(target_id: params[:id]).update_attributes(name: 'block')
+    respond_to :js
+  end
+
   def unblock
     Relation.find_by(target_id: params[:id]).update_attributes(name: 'friend')
     respond_to :js

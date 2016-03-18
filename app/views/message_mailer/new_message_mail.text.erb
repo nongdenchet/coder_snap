@@ -1,0 +1,4 @@
+New message
+Time: <%= @message.created_at.strftime('%d/%m/%Y - %I:%M%p') %>
+By: <%= @message.sender.name %>
+<%= link_to 'See message', @message %>
