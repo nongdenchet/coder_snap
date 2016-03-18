@@ -4,7 +4,7 @@
     <ul class="right hide-on-med-and-down">
       <% if current_user %>
           <li>
-            <%= link_to 'Add friends', users_path %>
+            <%= link_to 'Add friends', users_path, method: :get %>
           </li>
           <li>
             <%= link_to 'Sent messages', sent_messages_path, method: :get %>
@@ -14,10 +14,10 @@
           </li>
       <% else %>
           <li>
-            <%= link_to 'Login', new_sessions_path %>
+            <%= link_to 'Login', new_sessions_path, method: :get %>
           </li>
           <li>
-            <%= link_to 'Register', new_user_path %>
+            <%= link_to 'Register', new_user_path, method: :get %>
           </li>
       <% end %>
     </ul>
