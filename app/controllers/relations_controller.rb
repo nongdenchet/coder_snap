@@ -20,7 +20,7 @@ class RelationsController < ApplicationController
   end
 
   def index
-    @relations = Relation.friend_requests(current_user_id)
+    @relations = Relation.friend_requests(current_user_id).page(params[:page])
   end
 
   def confirm

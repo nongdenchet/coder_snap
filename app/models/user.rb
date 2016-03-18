@@ -32,15 +32,16 @@ class User < ActiveRecord::Base
     User.where('id NOT IN (?) AND id != (?)', relations.select(:target_id), id)
   end
 
-  def load_received_messages
+  def load_received_messages(page)
     received_messages
         .where('sender_id NOT IN (?)', block_relations.select(:target_id))
         .order('seen ASC')
         .order('created_at DESC')
+        .page(page)
         .preload(:sender)
   end
 
-  def load_sent_messages
-    sent_messages.preload(:recipient)
+  def load_sent_messages(page)
+    sent_messages.page(page).preload(:recipient)
   end
 end

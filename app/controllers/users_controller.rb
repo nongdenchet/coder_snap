@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = current_user.available_users
+    @users = current_user.available_users.page(params[:page])
   end
 
   def unblock
@@ -45,11 +45,11 @@ class UsersController < ApplicationController
   end
 
   def blocks
-    @blocks = current_user.blocks
+    @blocks = current_user.blocks.page(params[:page])
   end
 
   def friends
-    @friends = current_user.friends
+    @friends = current_user.friends.page(params[:page])
   end
 
   private

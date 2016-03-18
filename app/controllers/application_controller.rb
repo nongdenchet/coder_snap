@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_name
-    sign_in? ? ", #{current_user.name}" : ''
+    sign_in? ? "- #{current_user.name}" : ''
   end
 
   def friend_request_count

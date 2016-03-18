@@ -4,3 +4,5 @@
     <%= render partial: 'users/friend', collection: @friends, as: :user %>
   </div>
 </div>
+
+<%= paginate @friends %>

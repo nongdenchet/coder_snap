@@ -17,15 +17,12 @@ class MessagesController < ApplicationController
   before_action :check_readability, only: [:show]
 
   def index
-    @messages = MessageDecorator.decorate_collection(
-        current_user.load_received_messages
-    )
+    @messages = current_user.load_received_messages(params[:page]).decorate
   end
 
   def sent
-    @messages = MessageDecorator.decorate_collection(
-        current_user.load_sent_messages
-    )
+    @messages = current_user.load_sent_messages(params[:page]).decorate
+    puts @messages
   end
 
   def show

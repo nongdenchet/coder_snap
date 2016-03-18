@@ -40,6 +40,7 @@ The following **additional** features are implemented:
 
 - [x] User send friend request and wait for confirmation
 - [x] User can go to link "Friend requests" to confirm a friend request
+- [x] Add pagination
 
 ## Video Walkthrough 
 

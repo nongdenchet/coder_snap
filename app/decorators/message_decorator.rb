@@ -1,4 +1,4 @@
-class MessageDecorator < Draper::Decorator
+class MessageDecorator < ApplicationDecorator
   delegate_all
 
   def short_content

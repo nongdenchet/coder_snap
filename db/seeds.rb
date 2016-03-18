@@ -1,6 +1,6 @@
 users = []
 
-10.times do |index|
+20.times do |index|
   users << User.create(
       name: FFaker::Name.name,
       email: FFaker::Internet.email,
@@ -18,7 +18,7 @@ me = User.create(
     password_confirmation: 'androidDeveloper7'
 )
 
-User.take(5).each do |user|
+User.take(15).each do |user|
   me.relations.create(
       name: %w(friend block).sample,
       target_id: user.id,
@@ -37,7 +37,7 @@ User.take(5).each do |user|
       seen: [true, false].sample
   )
 
-  2.times do
+  5.times do
     me.received_messages.create(
         sender_id: user.id,
         content: FFaker::Lorem.paragraph(10),

@@ -4,3 +4,5 @@
     <%= render partial: 'sent_message', collection: @messages, as: :message %>
   </div>
 </div>
+
+<%= paginate @messages %>
