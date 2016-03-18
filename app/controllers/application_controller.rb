@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
-  helper_method :current_user, :sign_in?, :friend_request_count
+  helper_method :current_user, :sign_in?, :friend_request_count, :current_user_name
 
   def current_user
     @current_user ||= User.find_by_id(current_user_id)
@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
 
   def sign_in?
     !!current_user
+  end
+
+  def current_user_name
+    sign_in? ? ", #{current_user.name}" : ''
   end
 
   def friend_request_count

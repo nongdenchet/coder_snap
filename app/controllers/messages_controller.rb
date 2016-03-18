@@ -60,19 +60,11 @@ class MessagesController < ApplicationController
   def check_readability
     @message = Message.find(params[:id]).decorate
     if current_user != @message.recipient
-      handle_not_recipient
+      flash[:alert] = 'You can not read this message'
+      redirect_to messages_path
     elsif @message.seen
-      handle_message_read
+      flash[:alert] = 'Message has alreay been read'
+      redirect_to messages_path
     end
-  end
-
-  def handle_not_recipient
-    flash[:alert] = 'You can not read this message'
-    redirect_to messages_path
-  end
-
-  def handle_message_read
-    flash[:alert] = 'Message has alreay been read'
-    redirect_to messages_path
   end
 end
