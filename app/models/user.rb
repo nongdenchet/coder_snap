@@ -9,6 +9,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  description     :text
+#  avatar          :string
 #
 
 class User < ActiveRecord::Base
@@ -22,8 +23,8 @@ class User < ActiveRecord::Base
   has_many :received_messages, class_name: Message, foreign_key: :recipient_id, dependent: :destroy
 
   has_secure_password
-  validates :password, length: {minimum: 8}
-  validates :password_confirmation, presence: true
+  mount_uploader :avatar, ImageUploader
+  validates :password, length: {minimum: 8}, allow_nil: true
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true,
             format: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/

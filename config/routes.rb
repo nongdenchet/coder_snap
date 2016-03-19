@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users , only: [:create, :index, :new] do
+  resources :users, only: [:create, :index, :new, :edit, :update] do
     collection do
       get :blocks
       get :friends

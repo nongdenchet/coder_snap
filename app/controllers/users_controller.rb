@@ -9,11 +9,13 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  description     :text
+#  avatar          :string
 #
 
 class UsersController < ApplicationController
   before_action :skip_login, only: [:new, :create]
   before_action :require_login, except: [:new, :create]
+  before_action :get_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -27,6 +29,17 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update_attributes(user_update_params)
+      redirect_to root_path
+    else
+      render :edit
     end
   end
 
@@ -62,5 +75,13 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def user_update_params
+    params.require(:user).permit(:name, :description, :avatar)
+  end
+
+  def get_user
+    @user = User.find(params[:id])
   end
 end

@@ -44,6 +44,9 @@ gem 'kaminari'
 gem 'figaro'
 # bcrypt
 gem 'bcrypt'
+# image upload
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :test do
   # Testing framework go here

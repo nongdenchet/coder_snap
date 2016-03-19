@@ -1,7 +1,9 @@
 <div class="card purple darken-1" id="relation-<%= relation.id %>">
   <div class="card-content white-text">
-    <p>From: <%= relation.user.name %></p>
+    <%= image_tag relation.user.avatar, class: 'circle', width: '50', height: '50' %>
+    <span class="card-title" id="card-title"><%= relation.user.name %></span>
   </div>
+
   <div class="card-action purple darken-2">
     <%= link_to 'Confirm', confirm_relation_path(relation), method: :post, remote: true %>
   </div>

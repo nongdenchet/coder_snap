@@ -1,7 +1,8 @@
 <div class="card <%= message.class_for_card %>">
   <div class="card-content white-text">
-    <span class="card-title">From: <%= message.sender.name %>, at: <%= message.create_time %></span>
-    <p><%= message.short_content %></p>
+    <%= image_tag message.sender.avatar, class: 'circle', width: '50', height: '50' %>
+    <span class="card-title" id="card-title">From: <%= message.sender.name %>, at: <%= message.create_time %></span>
+    <p id="card-content"><%= message.short_content %></p>
   </div>
   <% unless message.seen %>
       <div class="card-action blue darken-2">

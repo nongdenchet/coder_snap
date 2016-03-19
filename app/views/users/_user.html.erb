@@ -1,7 +1,8 @@
 <div class="card green darken-1" id="user-<%= user.id %>">
   <div class="card-content white-text">
-    <span class="card-title"><%= user.name %></span>
-    <p><%= user.description %></p>
+    <%= image_tag user.avatar, class: 'circle', width: '50', height: '50' %>
+    <span class="card-title" id="card-title"><%= user.name %></span>
+    <p id="card-content"><%= user.description %></p>
   </div>
   <div class="card-action green darken-2">
     <%= link_to 'Add user to friends list', relations_path(id: user.id), method: :post, remote: true %>
