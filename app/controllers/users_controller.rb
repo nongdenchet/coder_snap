@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
       store_user_id(@user.id)
       flash[:notice] = 'Register successfully'
-      redirect_to root_path
+      redirect_to users_path
     else
       render :new
     end
@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_update_params)
+      flash[:notice] = 'Update successfully'
       redirect_to root_path
     else
       render :edit
@@ -78,7 +79,7 @@ class UsersController < ApplicationController
   end
 
   def user_update_params
-    params.require(:user).permit(:name, :description, :avatar)
+    params.require(:user).permit(:name, :description, :avatar, :password, :password_confirmation)
   end
 
   def get_user

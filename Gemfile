@@ -47,6 +47,9 @@ gem 'bcrypt'
 # image upload
 gem 'carrierwave'
 gem 'mini_magick'
+# omniauth
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 3.0.0'
 
 group :test do
   # Testing framework go here

@@ -22,8 +22,7 @@
 <nav>
   <div class="nav-wrapper">
     <%= link_to root_path, class: 'brand-logo' do %>
-        <%= image_tag current_user_img, height: 36, width: 36, style: 'vertical-align: sub',
-                      class: 'circle' %> <%= current_user_name %>
+        <%= current_user_img %> <%= current_user_name %>
     <% end %>
     <ul class="right hide-on-med-and-down">
       <% if current_user %>

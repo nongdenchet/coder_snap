@@ -11,7 +11,18 @@ class SessionsController < ApplicationController
       flash[:notice] = 'Login successfully'
       redirect_to restore_path
     else
-      flash[:alert] = 'Invalid email or password'
+      flash.now[:alert] = 'Invalid email or password'
+      render :new
+    end
+  end
+
+  def callback
+    if (user = FacebookAuthenticateService.new(env['omniauth.auth']).authenticate)
+      store_user_id(user.id)
+      flash[:notice] = 'Login successfully'
+      redirect_to users_path
+    else
+      flash.now[:alert] = 'Can not login with facebook'
       render :new
     end
   end

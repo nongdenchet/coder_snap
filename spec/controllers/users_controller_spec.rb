@@ -49,7 +49,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'should redirect to root path' do
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(users_path)
       end
     end
 
