@@ -69,4 +69,59 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
+
+  context 'GET #edit' do
+    before(:each) do
+      @user = create(:user)
+    end
+
+    it 'should get user' do
+      session[:user_id] = @user.id
+      get :edit, id: @user.id
+      expect(assigns(:user).id).to eq(@user.id)
+    end
+
+    it 'should render edit' do
+      session[:user_id] = @user.id
+      get :edit, id: @user.id
+      expect(response).to render_template(:edit)
+    end
+
+    it 'should require login' do
+      get :edit, id: @user.id
+      expect(response).to redirect_to new_sessions_path
+    end
+  end
+
+  context 'POST #update' do
+    before(:each) do
+      @user = create(:user)
+    end
+
+    context 'login user' do
+      before(:each) do
+        session[:user_id] = @user.id
+      end
+
+      it 'should show redirect to root' do
+        post :update, id: @user.id, user: attributes_for(:user)
+        expect(response).to redirect_to root_path
+      end
+
+      it 'should show flash' do
+        post :update, id: @user.id, user: attributes_for(:user)
+        expect(flash[:notice]).to eq('Update successfully')
+      end
+
+      it 'should render edit' do
+        post :update, id: @user.id, user: attributes_for(:user, name: '')
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    it 'should redirect to login' do
+      post :update, id: @user.id, user: attributes_for(:user)
+      expect(response).to redirect_to new_sessions_path
+    end
+  end
 end

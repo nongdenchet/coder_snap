@@ -1,11 +1,11 @@
 class UnfriendService
-  def initialize(user_id, target_id)
-    @user_relation = Relation.find_by(user_id: user_id, target_id: target_id)
-    @target_relation = Relation.find_by(user_id: target_id, target_id: user_id)
+  def unfriend(user_id, target_id)
+    delete_relation(user_id, target_id)
+    delete_relation(target_id, user_id)
   end
 
-  def unfriend
-    @user_relation.delete
-    @target_relation.delete
+  private
+  def delete_relation(user_id, target_id)
+     Relation.find_by(user_id: user_id, target_id: target_id).destroy
   end
 end

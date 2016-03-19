@@ -19,4 +19,11 @@ FactoryGirl.define do
     password 'androidDeveloper'
     password_confirmation 'androidDeveloper'
   end
+
+  factory :target, class: User do
+    name 'target'
+    email 'target@gmail.com'
+    password 'androidDeveloper'
+    password_confirmation 'androidDeveloper'
+  end
 end

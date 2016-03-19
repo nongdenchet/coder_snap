@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true,
             format: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+  scope :available_users, -> {
+    where('id NOT IN (?) AND id != (?)', relations.select(:target_id), id)
+  }
+
   def available_users
     User.where('id NOT IN (?) AND id != (?)', relations.select(:target_id), id)
   end

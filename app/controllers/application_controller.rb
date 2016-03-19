@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def friend_request_count
-    sign_in? ? Relation.friend_requests(current_user_id).count : 0
+    sign_in? ? Relation.friend_requests(current_user_id).length : 0
   end
 
   def skip_login

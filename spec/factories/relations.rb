@@ -11,13 +11,12 @@
 #  active     :boolean          default(FALSE)
 #
 
-class Relation < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :target, class_name: User, foreign_key: :target_id
+FactoryGirl.define do
+  factory :user_relation, class: Relation do
+    name 'friend'
+  end
 
-  validates_presence_of :name, :target_id, :user_id
-
-  scope :friend_requests, lambda { |target_id|
-    where(name: 'friend', active: false, target_id: target_id).preload(:user)
-  }
+  factory :target_relation, class: Relation do
+    name 'friend'
+  end
 end

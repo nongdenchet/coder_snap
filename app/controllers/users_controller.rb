@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def unfriend
-    UnfriendService.new(current_user_id, params[:id]).unfriend
+    UnfriendService.new.unfriend(current_user_id, params[:id])
     respond_to :js
   end
 
