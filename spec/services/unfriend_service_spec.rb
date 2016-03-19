@@ -2,11 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UnfriendService do
   before(:each) do
-    user = create(:user)
-    target = create(:target)
     @service = UnfriendService.new
-    @user_relation = create(:user_relation, user: user, target: target)
-    @target_relation = create(:target_relation, user: target, target: user)
+    relation = Data.relation_sample
+    @user_relation, @target_relation = relation[:user_relation], relation[:target_relation]
   end
 
   it 'should create relation' do
