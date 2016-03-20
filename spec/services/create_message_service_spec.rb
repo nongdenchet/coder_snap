@@ -34,7 +34,7 @@ RSpec.describe CreateMessageService do
 
   context 'input ids that are not friends' do
     before(:each) do
-      service = CreateMessageService.new(@relation[:user], {content: 'content', friends: [100, 200]})
+      service = CreateMessageService.new(@relation[:user], {content: 'content', friends: ['100', '200']})
       @result = service.create
     end
 
@@ -58,7 +58,7 @@ RSpec.describe CreateMessageService do
   context 'create messages success' do
     before(:each) do
       service = CreateMessageService.new(
-          @relation[:user], {content: 'content', friends: [@relation[:target].id]}
+          @relation[:user], {content: 'content', friends: [@relation[:target].id.to_s]}
       )
       @mail = double(:mail)
       allow(@mail).to receive(:deliver_later)

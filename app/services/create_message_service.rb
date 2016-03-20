@@ -25,7 +25,7 @@ class CreateMessageService
 
   def check_friends
     if @params[:friends]
-      (@params[:friends] - @sender.friends.pluck(:id)).empty?
+      (@params[:friends].map(&:to_i) - @sender.friends.pluck(:id)).empty?
     else
       true
     end
