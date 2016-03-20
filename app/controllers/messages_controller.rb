@@ -25,7 +25,6 @@ class MessagesController < ApplicationController
 
   def sent
     @messages = current_user.load_sent_messages(params[:page]).decorate
-    puts @messages
   end
 
   def show
