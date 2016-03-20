@@ -41,6 +41,8 @@ The following **additional** features are implemented:
 - [x] User send friend request and wait for confirmation
 - [x] User can go to link "Friend requests" to confirm a friend request
 - [x] Add pagination
+- [x] Add some security
+- [x] Material Design
 - [x] If user follow link in email put not login, after login user will be automatically redirect to the link 
 
 ## Video Walkthrough 
