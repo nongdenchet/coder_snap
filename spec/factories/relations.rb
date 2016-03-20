@@ -19,4 +19,14 @@ FactoryGirl.define do
   factory :target_relation, class: Relation do
     name 'friend'
   end
+
+  factory :user_active_relation, class: Relation do
+    name 'friend'
+    active true
+  end
+
+  factory :target_active_relation, class: Relation do
+    name 'friend'
+    active true
+  end
 end

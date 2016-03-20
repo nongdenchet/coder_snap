@@ -19,12 +19,16 @@ class CreateMessageService
     errors = []
     errors << 'Content must not be empty' if @params[:content].blank?
     errors << 'Please add at least one friend' if @params[:friends].blank?
-    # errors << 'Some people are not your friends' unless check_friends
+    errors << 'Some people are not your friends' unless check_friends
     errors
   end
 
   def check_friends
-    (@params[:friends] - @sender.friends.pluck(:id)).empty?
+    if @params[:friends]
+      (@params[:friends] - @sender.friends.pluck(:id)).empty?
+    else
+      true
+    end
   end
 
   def create_message
