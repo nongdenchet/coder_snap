@@ -47,7 +47,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](relative-path-to-your-gif-file-on-github-or-absolute-path-to-file-on-imgur-or-youtube)
+![Video Walkthrough](https://github.com/nongdenchet/coder_snap/blob/master/snappy_chat.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
